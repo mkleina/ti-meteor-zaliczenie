@@ -1,0 +1,35 @@
+<template name="clothes_list">
+    {{#if clothes_loaded}}
+        {{#if any_clothes}}
+            {{#each get_clothes}}
+                {{> cloth_item}}
+            {{/each}}
+        {{else}}
+            <div>Brak ubrań</div>
+        {{/if}}
+    {{else}}
+    <div>Wczytywanie...</div>
+    {{/if}}
+    <div class="placeholder"></div>
+</template>
+
+<template name="cloth_item">
+    <div class="cloth-post" id="cloth{{cloth_id}}">
+        <div class="cloth-image">
+            <img src="/images/{{cloth_image_id}}" height="300"/>
+        </div>
+        <div class="cloth-data">
+            <div class="cloth-param">Nazwa:</div><div class="cloth-value">{{cloth_name}}</div>
+            <div class="cloth-param">Opis:</div><div class="cloth-value">{{cloth_description}}</div>
+            <div class="cloth-param">Pory roku:</div><div class="cloth-value">{{cloth_season}}</div>
+            <div class="cloth-param">Zalecane temperatury:</div><div class="cloth-value">od {{cloth_temp_min}} ℃ do {{cloth_temp_max}} ℃</div>
+        </div>
+        {{#if is_edit_mode}}
+        <form id="cloth_delete_form" class="cloth-delete-form">
+            <input type="hidden" value="{{cloth_id}}" name="cloth_id"/>
+            <input type="submit" class="cloth-delete-button" value="Usuń ubranie"/>
+        </form>
+        {{/if}}
+        <div class="clear"></div>
+    </div>
+</template>

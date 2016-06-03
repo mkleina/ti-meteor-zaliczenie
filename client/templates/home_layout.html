@@ -1,0 +1,24 @@
+<template name="home_layout">
+    {{> weather_info}}
+
+    <div class="cloth-view">
+        {{#if showing_all}}
+            <h2>Wszystkie ubrania</h2>
+        {{/if}}
+        {{#if showing_today}}
+            <h2>Ubrania na dziś</h2>
+        {{/if}}
+        {{#if showing_now}}
+            <h2>Ubrania na teraz</h2>
+        {{/if}}
+    </div>
+
+    {{> Template.dynamic template="clothes_list" data=show_mode }}
+
+    <div class="nav-bar">
+        <button type="button" id="show_today">Pokaż ubrania na dziś</button>
+        <button type="button" id="show_now">Pokaż ubrania na teraz</button>
+        <button type="button" id="show_all">Pokaż wszystkie ubrania</button>
+        <a href="/manage"><button type="button" class="manage-button">Zarządzaj swoją szafą</button></a>
+    </div>
+</template>

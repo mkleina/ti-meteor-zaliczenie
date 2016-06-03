@@ -1,0 +1,26 @@
+<template name="weather_info">
+    <div class="weather-info-bg">
+        <div class="weather-info-panel">
+            <table class="weather-data">
+                <tr class="weather-param-row">
+                    <td class="weather-param">Pozycja geograficzna:</td><td class="weather-value">{{#if geo_pos}}{{geo_pos}}{{else}}Pobieram...{{/if}}</td>
+                </tr>
+                <tr class="weather-param-row">
+                    <td class="weather-param">Temperatura minimalna:</td><td class="weather-value">{{#if weather_available}} {{weather_temp_min}} ℃{{else}}Pobieram...{{/if}}</td>
+                </tr>
+                <tr class="weather-param-row">
+                    <td class="weather-param">Temperatura maksymalna:</td><td class="weather-value">{{#if weather_available}} {{weather_temp_max}} ℃{{else}}Pobieram...{{/if}}</td>
+                </tr>
+                <tr class="weather-param-row">
+                    <td class="weather-param">Temperatura aktualna:</td><td class="weather-value">{{#if weather_available}} {{weather_temp}} ℃{{else}}Pobieram...{{/if}}</td>
+                </tr>
+                <tr class="weather-param-row">
+                    <td class="weather-param">Pora roku:</td><td class="weather-value">{{weather_season}}</td>
+                </tr>
+                <tr class="weather-param-row">
+                    <td class="weather-param">Miasto:</td><td class="weather-value">{{weather_city}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</template>

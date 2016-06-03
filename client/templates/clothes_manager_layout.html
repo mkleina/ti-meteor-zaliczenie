@@ -1,0 +1,65 @@
+<template name="clothes_manager_layout">
+    <div class="title-subpage">
+        <h1>Menedżer ubrań</h1>
+        <h2>Dodaj lub usuń ubranie z Twojej szafy</h2>
+    </div>
+    <div id="cloth_add" style="display: none">
+        <div class="cloth-add-form">
+            <form id="cloth_add_form">
+                <div class="cloth-add-fields">
+                    <h1>Dodawanie nowego ubrania</h1>
+
+                    <div class="error-message" id="cloth_name_error" style="display: none">Podaj nazwę ubrania</div>
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Nazwa:</div>
+                        <div class="cloth-add-value"><input type="text" name="cloth_name"/></div>
+                    </div>
+                
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Opis:</div>
+                        <div class="cloth-add-value"><input type="text" name="cloth_description"/></div>
+                    </div>
+                
+                    <div class="error-message" id="cloth_season_error" style="display: none">Wybierz przynajmniej jedną porę roku</div>
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Pory roku:</div>
+                        <div class="cloth-add-value">
+                            {{#each get_seasons}}
+                                <label><input name="cloth_season" type="checkbox" value="{{season_id}}"/>{{season_name}}</label>
+                            {{/each}}
+                        </div>
+                    </div>
+                
+                    <div class="error-message" id="cloth_temp_min_error" style="display: none">Wprowadź prawidłową temperaturę minimalną</div>                    
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Temperatura minimalna:</div>
+                        <div class="cloth-add-value"><input type="text" name="cloth_temp_min"/></div>
+                    </div>
+                
+                    <div class="error-message" id="cloth_temp_max_error" style="display: none">Wprowadź prawidłową temperaturę maksymalną</div>
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Temperatura maksymalna:</div>
+                        <div class="cloth-add-value"><input type="text" name="cloth_temp_max"/></div>
+                    </div>
+                
+                    <div class="error-message" id="cloth_image_error" style="display: none">Wybierz zdjęcie aby dodać ubranie</div>
+                    <div class="cloth-add-row">
+                        <div class="cloth-add-param">Zdjęcie:</div>
+                        <div class="cloth-add-value"><input type="file" name="cloth_image" accept="image/*"/></div>
+                    </div>
+                </div>
+                <div class="cloth-add-button-panel">
+                    <input type="submit" class="save-button" value="Zapisz"/>
+                    <button type="button" id="cloth_add_cancel_button" class="cancel-button">Anuluj</button>
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+    <div id="cloth_add_loading" style="display: none">Dodawanie nowego ubrania w toku...</div>
+    {{> clothes_list mode="edit" show="all"}}
+    <div class="nav-bar">
+        <a href="/"><button type="button">Wróć do panelu głównego</button></a>
+        <button id="cloth_add_button" class="cloth-add-button">Dodaj ubranie</button>
+    </div>
+</template>
